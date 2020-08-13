@@ -1,0 +1,6 @@
+<form [formGroup]="mainForm">
+  <input type="text" [formControl]="titleInput" placeholder="title">
+  <br>
+  <input type="text" [formControl]="bodyInput" placeholder="body">
+  <button (click)="save(mainForm)">save</button>
+</form>
