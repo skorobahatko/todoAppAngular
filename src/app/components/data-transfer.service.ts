@@ -6,8 +6,7 @@ import {Todo} from './todo';
   providedIn: 'root'
 })
 export class DataTransferService {
-
-  state: BehaviorSubject<Todo[]> = new BehaviorSubject<Todo[]>({});
+  state: BehaviorSubject<Todo> = new BehaviorSubject<Todo>({title: '', body: ''});
   currentTodo = this.state.asObservable();
 
   constructor() { }

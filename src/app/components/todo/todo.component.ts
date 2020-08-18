@@ -8,7 +8,7 @@ import {Todo} from '../todo';
   styleUrls: ['./todo.component.scss']
 })
 export class TodoComponent implements OnInit {
-  todos: Todo[] = [];
+  todos = [];
   newTodo: Todo;
   constructor(private dataTransferService: DataTransferService) {
     console.log(this.todos);
@@ -16,13 +16,18 @@ export class TodoComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.todos);
-    this.dataTransferService.currentTodo.subscribe(
+    this.dataTransferService.state.subscribe(
       todo => {
-        console.log(todo);
-        console.log(this.todos);
-        this.newTodo = todo;
-        this.todos = [...this.todos, this.newTodo];
-        console.log(this.dataTransferService.currentTodo);
+        if (todo === {title: '', body: ''}) {
+          this.todos = [];
+        } else {
+          console.log(this.todos);
+          this.newTodo = todo;
+          console.log(this.newTodo);
+          this.todos.push(this.newTodo);
+          console.log(this.todos);
+
+        }
       }
     );
   }
