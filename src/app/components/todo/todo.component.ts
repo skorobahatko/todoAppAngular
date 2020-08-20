@@ -8,27 +8,15 @@ import {Todo} from '../todo';
   styleUrls: ['./todo.component.scss']
 })
 export class TodoComponent implements OnInit {
-  todos = [];
-  newTodo: Todo;
+  todos: Todo[];
   constructor(private dataTransferService: DataTransferService) {
-    console.log(this.todos);
   }
-
   ngOnInit(): void {
-    console.log(this.todos);
     this.dataTransferService.state.subscribe(
-      todo => {
-        if (todo === {title: '', body: ''}) {
-          this.todos = [];
-        } else {
-          console.log(this.todos);
-          this.newTodo = todo;
-          console.log(this.newTodo);
-          this.todos.push(this.newTodo);
-          console.log(this.todos);
-
-        }
-      }
+      data => this.todos = data
     );
+  }
+  deleteTodo(index): void {
+    this.dataTransferService.deleteTodo(index);
   }
 }

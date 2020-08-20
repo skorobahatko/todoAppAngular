@@ -1,4 +1,11 @@
-<div *ngFor="let todo of todos" class="todo-body">
+<div *ngFor="let todo of todos; let i = index" class="todo-container">
+  <div class="todo-title">
     {{todo.title}}
+  </div>
+  <div class="todo-body">
     {{todo.body}}
+  </div>
+  <div class="todo-btn">
+    <button (click)="deleteTodo(i)">X</button>
+  </div>
 </div>

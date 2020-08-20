@@ -13,10 +13,12 @@ export class FormComponent implements OnInit {
   mainForm: FormGroup;
   titleInput: FormControl;
   bodyInput: FormControl;
+  titleError: string;
+  bodyError: string;
 
   constructor(private dataTransferService: DataTransferService) {
-    this.titleInput = new FormControl('');
-    this.bodyInput = new FormControl('');
+    this.titleInput = new FormControl('', [Validators.required]);
+    this.bodyInput = new FormControl('', [Validators.required]);
     this.mainForm = new FormGroup({
       title: this.titleInput,
       body: this.bodyInput
@@ -26,8 +28,21 @@ export class FormComponent implements OnInit {
   ngOnInit(): void {
   }
   save(mainForm: FormGroup): void {
-    this.todo.title = mainForm.controls.title.value;
-    this.todo.body = mainForm.controls.body.value;
-    this.dataTransferService.changeState(this.todo);
+    if (mainForm.controls.title.invalid || mainForm.controls.body.invalid) {
+      if (mainForm.controls.title.invalid) {
+        this.titleError = 'fill title please';
+      }
+      if (mainForm.controls.body.invalid) {
+        this.bodyError = 'fill body please';
+      }
+    } else {
+      this.todo.title = mainForm.controls.title.value;
+      this.todo.body = mainForm.controls.body.value;
+      console.log(this.todo);
+      this.dataTransferService.changeState(this.todo);
+      this.titleError = '';
+      this.bodyError = '';
+      mainForm.setValue({title: '', body: ''});
+    }
   }
 }

@@ -1,4 +1,16 @@
-.todo-body {
-  border: 1px solid black;
+.todo-container {
+  border: 1px solid darkslategrey;
+  border-radius: 5px;
   width: 30vw;
+  margin-top: 10px;
+}
+.todo-title {
+  margin: 10px;
+  font-weight: bold;
+}
+.todo-body {
+  margin: 10px;
+}
+.todo-btn {
+  margin: 0 0 10px 80%;
 }

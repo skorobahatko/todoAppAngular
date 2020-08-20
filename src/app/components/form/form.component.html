@@ -4,3 +4,5 @@
   <input type="text" [formControl]="bodyInput" placeholder="body">
   <button (click)="save(mainForm)">save</button>
 </form>
+<div *ngIf="titleError">{{titleError}}</div>
+<div *ngIf="bodyError">{{bodyError}}</div>

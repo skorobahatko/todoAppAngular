@@ -19,9 +19,14 @@ h2 {
 .container-body {
   display: flex;
   justify-content: space-around;
-  align-items: center;
   height: 70vh;
 }
 .container-body div {
-
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container-body .todo {
+  align-items: flex-start;
 }
